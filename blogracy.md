@@ -224,7 +224,8 @@ class: large-image
 
 Features of various Multi-Authority ABE schemes
 
-No concrete scheme available for usage in P2P scenarios 
+No concrete scheme available for usage in P2P scenarios <br>
+L&W2011 is promising, but based on a theoretical random oracle
 
 ---
 
