@@ -231,11 +231,11 @@ L&W2011 is promising, but based on a theoretical random oracle
 
 title: Re-certification
 
-- *Best News* certifies that *Alice* is among its own *reporters* (attribute certificate)
+- *Best News* certifies that *Alice* is among its own “*reporters*” (attribute certificate)
 - *Alice* shows the certificate to *Carol*
 - *Carol* trusts *Best News* for that kind of attributes
-- *Carol* issues her own certification to *Alice*, as a *Best News reporter*
-- *Alice* can then access *Carol* 's messages targeted to *Best News reporter*
+- *Carol* issues her own certification to *Alice*, as a “*Best News reporter*”
+- *Alice* can then access *Carol* 's messages targeted to “*Best News reporter*”
 
 ---
 
