@@ -384,10 +384,34 @@ URL: https://code.google.com/p/io-2012-slides
  
 </slide>
 
-<slide class="large-figure" >
+<slide  >
   
     <hgroup>
       <h2>Attribute-Based Encryption</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Cyphertext-Policy Attribute-Based Encryption <em>(Bethencourt, Sahai and Waters, 2007)</em><ul>
+<li>Certified attributes used to grant access rights to users</li>
+<li>Attribute authority, a <em>trusted third party</em></li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="CP-ABE"><code>( ( “Public Corruption Office”
+    AND (“Knoxville” OR “San Francisco”) )
+  OR (management-level &gt; 5)
+  OR “Name: Charlie Eppes” )
+</code></pre>
+<blockquote></blockquote>
+<p>Example of access policy</p></article>
+ 
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>Targeted broadcast in Blogracy</h2>
       <h3></h3>
     </hgroup>
     <article >
@@ -395,16 +419,13 @@ URL: https://code.google.com/p/io-2012-slides
         <img src="images/targeted-broadcast.png">
         
       </figure><ul>
-<li>Cyphertext-Policy Attribute-Based Encryption <em>(Bethencourt, Sahai and Waters, 2007)</em><ul>
-<li>Certified attributes grant access rights to users</li>
-<li>Attribute authority, a <em>trusted third party</em></li>
+<li>Attributes issued directly by content creators to acknowledged followers</li>
+<li>Access policy for each message (or social activity)<ul>
+<li>Each message disclosed to different intended receivers</li>
 </ul>
 </li>
-<li>Blogracy: <em>targeted broadcast</em><ul>
-<li>Attributes issued directly by content creators to acknowledged followers</li>
-<li>Access policy for each message (or social activity)</li>
-<li>Each message disclosed to different intended receivers</li>
-<li>Attribute credentials in their content creator's feed, encrypted with the follower's public key</li>
+<li>Attribute credentials are enclosed in the content creator's OpenSocial file<ul>
+<li>... encrypted using the follower's public key</li>
 </ul>
 </li>
 </ul></article>
@@ -434,11 +455,11 @@ L&amp;W2011 is promising, but based on a theoretical random oracle</p></article>
     </hgroup>
     <article >
       <ul>
-<li><em>Best News</em> certifies that <em>Alice</em> is one ot its <code>reporter</code>s (attribute certificate)</li>
+<li><em>Best News</em> certifies that <em>Alice</em> is one ot its “<code>reporter</code>”s (attribute certificate)</li>
 <li><em>Alice</em> shows the certificate to <em>Carol</em></li>
 <li><em>Carol</em> trusts <em>Best News</em> for that kind of attributes</li>
-<li><em>Carol</em> issues her own certification to <em>Alice</em>, as a <code>Best News reporter</code></li>
-<li><em>Alice</em> can then access <em>Carol</em> 's messages targeted to <code>Best News reporter</code></li>
+<li><em>Carol</em> issues her own certification to <em>Alice</em>, as a “<code>Best News reporter</code>”</li>
+<li><em>Alice</em> can then access <em>Carol</em> 's messages targeted to “<code>Best News reporter</code>”</li>
 </ul></article>
  
 </slide>

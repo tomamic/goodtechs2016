@@ -201,17 +201,33 @@ class: large-figure
 ---
 
 title: Attribute-Based Encryption
+
+- Cyphertext-Policy Attribute-Based Encryption *(Bethencourt, Sahai and Waters, 2007)*
+    - Certified attributes used to grant access rights to users
+    - Attribute authority, a *trusted third party*
+
+code: CP-ABE
+
+    ( ( “Public Corruption Office”
+        AND (“Knoxville” OR “San Francisco”) )
+      OR (management-level > 5)
+      OR “Name: Charlie Eppes” )
+
+>
+
+Example of access policy
+
+---
+
+title: Targeted broadcast in Blogracy
 figure: images/targeted-broadcast.png
 class: large-figure
 
-- Cyphertext-Policy Attribute-Based Encryption *(Bethencourt, Sahai and Waters, 2007)*
-    - Certified attributes grant access rights to users
-    - Attribute authority, a *trusted third party*
-- Blogracy: *targeted broadcast*
-    - Attributes issued directly by content creators to acknowledged followers
-    - Access policy for each message (or social activity)
+- Attributes issued directly by content creators to acknowledged followers
+- Access policy for each message (or social activity)
     - Each message disclosed to different intended receivers
-    - Attribute credentials in their content creator's feed, encrypted with the follower's public key
+- Attribute credentials are enclosed in the content creator's OpenSocial file
+    - ... encrypted using the follower's public key
 
 ---
 
@@ -231,11 +247,11 @@ L&W2011 is promising, but based on a theoretical random oracle
 
 title: Re-certification
 
-- *Best News* certifies that *Alice* is one ot its `reporter`s (attribute certificate)
+- *Best News* certifies that *Alice* is one ot its “`reporter`”s (attribute certificate)
 - *Alice* shows the certificate to *Carol*
 - *Carol* trusts *Best News* for that kind of attributes
-- *Carol* issues her own certification to *Alice*, as a `Best News reporter`
-- *Alice* can then access *Carol* 's messages targeted to `Best News reporter`
+- *Carol* issues her own certification to *Alice*, as a “`Best News reporter`”
+- *Alice* can then access *Carol* 's messages targeted to “`Best News reporter`”
 
 ---
 
