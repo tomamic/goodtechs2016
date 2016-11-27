@@ -1352,6 +1352,9 @@ aside.gdbar img {
   line-height: 1.3;
   margin-top: 2em;
 }
+.title-slide h1 {
+  visibility: hidden;
+}
 
 /* line 949, ../scss/default.scss */
 .quote {
