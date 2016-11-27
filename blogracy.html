@@ -1,0 +1,524 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahe <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blogracy</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="all" href="theme/css/tomamic.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+<slide class="title-slide segue nobackground">
+  <aside class="gdbar"><img src="images/logo.png"></aside>
+  <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+  <h1 data-config-title><!-- populated from slide_config.json --></h1>
+  <figure><img src="images/blogracy-logo.png"></figure>
+  <hgroup>
+    <h2>Preserving Privacy in a P2P Social Network</h2>
+    <p>Monica Mordonini, Agostino Poggi, and Michele Tomaiuolo<br>Ingegneria dell'Informazione, UniPR.it</p>
+  </hgroup>
+</slide>
+
+
+<slide  >
+  
+    <hgroup>
+      <h2>Motivations</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/fb-napalm-girl.jpg"><img src="images/fb-charlie-hebdo.jpg">
+        
+      </figure><ul>
+<li>Popular social networking platforms<ul>
+<li>Centralized: algorithms (recommendation etc.) have full access to data</li>
+<li>Web based: easy access, across devices</li>
+</ul>
+</li>
+<li>But... there are some <em>“buts”</em><ul>
+<li>Risk of mass surveillance</li>
+<li>Lack of control and risk of censorship</li>
+<li>Risk of privacy leak</li>
+<li>Availability and reachability during crisis</li>
+<li>High cost of ownership, for multimedia services</li>
+<li>Ads or revenue generating data usage</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Distributed platforms</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Federated systems<ul>
+<li>Diaspora, StatusNet</li>
+<li>Users can suffer attacks to popular pods</li>
+</ul>
+</li>
+<li>Custom peer-to-peer systems<ul>
+<li>Freenet, PeerSoN, LotusNet, Safebook, Persona, Life Social</li>
+<li>In some cases, a single node can still host various users</li>
+</ul>
+</li>
+<li>Lack of...<ul>
+<li>Systems based on popular P2P protocols</li>
+<li>Open source, workable implementations</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Design of Blogracy</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Modular design, orthogonal solutions for different aspects<ul>
+<li>Data formats, file sharing protocols</li>
+<li>Identity, integrity, confidentiality, anonymity</li>
+<li>Open source, available on GitHub for experimentation</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="images/figure01.png" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Basic formats and protocols</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>OpenSocial<ul>
+<li>W3C standard for social activities, based on JSON</li>
+<li>Recent <em>social activities</em> saved in a local file</li>
+<li>The file <em>can</em> include <em>profile</em> information</li>
+<li>... and a list of <em>followees</em></li>
+</ul>
+</li>
+<li>BitTorrent<ul>
+<li>File sharing</li>
+<li>P2P, fully distributed</li>
+</ul>
+</li>
+<li>Kademlia, Distributed Hash Table<ul>
+<li>All nodes mantain information about file availability</li>
+<li>Without servers/trackers </li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Identity and security</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Key based identity<ul>
+<li>Each user is identified by his/her public key</li>
+</ul>
+</li>
+<li>Each user has an associated file<ul>
+<li>Social db: profile, followees and activities</li>
+<li>DHT for mapping: <code>user_id</code> → <code>file_hash</code></li>
+</ul>
+</li>
+<li>Signed activities for integrity<ul>
+<li>JSON Web signature</li>
+</ul>
+</li>
+<li>End to end encryption for confidentiality<ul>
+<li>Attribute-Based Encryption</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Resource sharing</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/figure02.png" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Updating the followees’ feeds</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/figure03.png" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Node churn</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>In P2P, some users connect and others disconnect, continuously</li>
+<li>But in BitTorrent, downloading a resource corresponds to sharing it</li>
+<li>If a user has enough followers, they contribute to make his/her messages available</li>
+<li>Also when the original message source is offline</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Simulation</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Simulations limited to the network of nodes directly following a certain source<ul>
+<li>Usually, this is the sharing community</li>
+</ul>
+</li>
+<li>Two kinds of nodes<ul>
+<li>Nodes connecting quite occasionally (three times a day, 15 minutes in total)</li>
+<li>More stable nodes, connecting for 8 hours a day (avg BitTorrent session; collaborative work)</li>
+</ul>
+</li>
+<li>A follower is online at the instant when a new message is published?<ul>
+<li>Yes: optimal reception time == instant of publication</li>
+<li>Otherwise: the first time the follower goes online again</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Results of simulations</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/figure04-05.png" /></p>
+<ul>
+<li>Ok with 120 followers, 10% stable nodes → 5 min delay</li>
+<li>Difficult with 40 followers<ul>
+<li>30% stable node → 10 min delay</li>
+<li>5% stable nodes → 8 hours delay</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>Long tail of delays</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/figure06.png">
+        <figcaption>Cumulative distribution of notification delays</figcaption>
+      </figure><ul>
+<li>Most messages are received virtually immediately</li>
+<li>But for few messages, no seeds are available</li>
+<li>In these cases, quite long delays are suffered</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Implementation, results</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Implementation over BitTorrent</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Plugin for Vuze (fka Azureus)<ul>
+<li>Java-based BitTorrent client</li>
+<li>Object-oriented, extensible</li>
+</ul>
+</li>
+<li>Web application<ul>
+<li>Embedded Jetty web server</li>
+</ul>
+</li>
+<li>Communications through JMS<ul>
+<li>ActiveMQ</li>
+<li>Messages exchanged also with the browser</li>
+<li>Real time updates</li>
+</ul>
+</li>
+<li>Publish/subscribe channels based on Vuze DHT</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Web based interface</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/figure07.png" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Push vs. pull propagation</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Polling: unnecessary delays and traffic<ul>
+<li>Pushing: not always appropriate; node churn in P2P</li>
+<li>Need to strike a balance between polling/pushing mechanisms</li>
+</ul>
+</li>
+<li>Blogracy: pushing mechanism based on DHT<ul>
+<li>Publish/subscribe on multiple channels</li>
+<li>Potentially, a channel for each user</li>
+<li>Users interested in a channel, share a torrent</li>
+<li>The shared hash is obtained by the name of the channel</li>
+<li>Messages are sent <em>directly</em> to all online subscribers</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>Pushing update notifications</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/figure09.png">
+        <figcaption>Cumulative distribution of the delay (millis) of direct notification messages</figcaption>
+      </figure><ul>
+<li>Testing: 20 nodes over the PlanetLab testbed, constantly online</li>
+<li>All nodes participate to a common publish/subscribe channel</li>
+<li>90% of messages are received in (less than) half a minute</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>Polling full files, at startup</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/figure10.png">
+        <figcaption>Cumulative distribution of the delay in the reception of messages</figcaption>
+      </figure><ul>
+<li>Testing: 20 nodes over the PlanetLab testbed, constantly online</li>
+<li>90% of messages are received in (less than) 3.5 minutes<ul>
+<li>A polling cycle every two minutes...</li>
+<li>accounts for 1 additional minute, in average</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>Attribute-Based Encryption</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/targeted-broadcast.png">
+        
+      </figure><ul>
+<li>Cyphertext-Policy Attribute-Based Encryption <em>(Bethencourt, Sahai and Waters, 2007)</em><ul>
+<li>Certified attributes grant access rights to users</li>
+<li>Attribute authority, a <em>trusted third party</em></li>
+</ul>
+</li>
+<li>Blogracy: <em>targeted broadcast</em><ul>
+<li>Attributes issued directly by content creators to acknowledged followers</li>
+<li>Access policy for each message (or social activity)</li>
+<li>Each message disclosed to different intended receivers</li>
+<li>Attribute credentials in their content creator's feed, encrypted with the follower's public key</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Multi-authority protocols</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/maabe.png" /></p>
+<blockquote></blockquote>
+<p>Features of various Multi-Authority ABE schemes</p>
+<p>No concrete scheme available for usage in P2P scenarios </p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Re-certification</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>“Best News” certifies that Alice is among its own reporters (<em>attribute certificate</em>)</li>
+<li>Alice shows the certificate to Carol</li>
+<li>Carol trusts “Best News” for that kind of attributes</li>
+<li>Carol issues her own certification to Alice, as a “Best News reporter”</li>
+<li>Alice can then access Carol's messages targeted to “Best News reporter”</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Network-level anonymity</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>ISP can easily deanonymize users<ul>
+<li>Proxies and mix networks for network-level anonymity</li>
+</ul>
+</li>
+<li>Tor for network anonymity<ul>
+<li>Focused on web browsing through outproxies</li>
+<li>Supports internal hidden services...</li>
+<li>But discourages public file sharing</li>
+<li>Darknet-based file sharing is virtually nonexistant</li>
+</ul>
+</li>
+<li>I2P<ul>
+<li>Experimental, small community</li>
+<li>Not focused on browsing the web</li>
+<li>Supports internal hidden services...</li>
+<li>And encourages file-sharing among darknet peers</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Performance over I2P</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/figure41-42.png" /></p>
+<ul>
+<li>Times are much longer (3.5x)</li>
+<li>In line with other measurements, about web browsing with Tor and I2P</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Conclusion</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Working prototype, for testing and further development</li>
+<li>Modular architecture: BitTorrent backend, web interface, standard formats</li>
+<li>Orthogonal solutions for different aspects</li>
+<li>Experimental verification, for identifying workable conditions</li>
+</ul></article>
+ 
+</slide>
+
+
+<slide class="thank-you-slide segue nobackground">
+  <aside class="gdbar right"><img src="images/logo.png"></aside>
+  <article class="flexbox vleft auto-fadein">
+    <h2>&lt;Domande?&gt;</h2>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    Monica Mordonini, Agostino Poggi, and Michele Tomaiuolo
+    <br>
+    Ingegneria dell'Informazione, UniPR.it
+    <br>
+    <a href="http://www.ce.unipr.it/people/tomamic">www.ce.unipr.it/people/tomamic</a>
+  </p>
+</slide>
+
+<slide class="backdrop"></slide>
+
+</slides>
+
+</body>
+</html>
