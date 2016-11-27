@@ -263,6 +263,8 @@ class: large-image
 
 title: Conclusion
 
+- Anonymity, confidentiality, direct control over posts
+- Scalability, especially for multimedia files
 - Working prototype, for testing and further development
 - Modular architecture: BitTorrent backend, web interface, standard formats
 - Orthogonal solutions for different aspects
