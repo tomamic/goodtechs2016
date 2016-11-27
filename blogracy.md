@@ -192,7 +192,7 @@ class: large-figure
 - Testing: 20 nodes over the PlanetLab testbed, constantly online
 - 90% of messages are received in (less than) 3.5 minutes
     - A polling cycle every two minutes...
-    - accounts for 1 additional minute, in average
+    - accounts for 1 additional minute, on average
 
 ---
 
