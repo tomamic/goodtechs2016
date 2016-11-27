@@ -151,6 +151,10 @@ title: Implementation over BitTorrent
     - Real time updates
 - Publish/subscribe channels based on Vuze DHT
 
+>
+
+<http://blogracy.net/>
+
 ---
 
 title: Web based interface
@@ -269,5 +273,9 @@ title: Conclusion
 - Modular architecture: BitTorrent backend, web interface, standard formats
 - Orthogonal solutions for different aspects
 - Experimental verification, for identifying workable conditions
+
+>
+
+<http://blogracy.net/>
 
 
