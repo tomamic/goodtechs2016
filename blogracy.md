@@ -204,7 +204,7 @@ title: Attribute-Based Encryption
 
 - Cyphertext-Policy Attribute-Based Encryption *(Bethencourt, Sahai and Waters, 2007)*
     - Certified attributes used to grant access rights to users
-    - Attribute authority, a *trusted third party*
+    - Attribute authority, in general a *trusted third party*
 
 code: CP-ABE
 
