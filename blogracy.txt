@@ -1,0 +1,310 @@
+title: Blogracy
+subtitle: Preserving Privacy in a P2P Social Network
+figure: images/blogracy-logo.png
+
+---
+
+title: Motivations
+
+Existing popular social platforms are quite different in many aspects.
+However, most of them are accessed as centralized systems.
+This approach provides important advantages.
+1. In fact, many algorithms for recommendations work well if they have complete knowledge of the social graph among users.
+2. Moreover, users can conveniently access all their data from everywhere and with every device.
+
+However, the centralized approach has also important drawbacks.
+
+1. There is a risk of privacy leacks, and also mass surveillance, which Snowden's disclosures have shown to be quite real
+2. Personal data is stored into "social silos" or "walled gardens", as Tim-Berners Lee defined them, thus it is difficult to create interacions across different social sites
+3. Published material is subject to the platform's policies, which can lead to the arbitrary censorship of paintings, historical photographs, political cartoons and other user generated content
+4. During political crisis, for example coups or mass protests, popular socila platform are easily blocked by autoritarian governments
+5. Also, such platforms have huge costs of ownership, especially in the case of shared videos and other multimedia content; thus, they have to exploit users' data to generate adequate revenue
+
+---
+
+title: Distributed platforms
+
+Many alternative approaches have been proposed, to overcome the issues of centralized social platforms.
+One approach is based on the federation of moltiple social platforms.
+The most successful example is Diaspora, which counts in total more than half a million users, of which one tenth has been active in the last six months. Federated platforms alleviate some of the problems of centralized systems. Howevers, thier servers, or pods, suffer some of the same limitations, as they can be blocked or may present high costs for sharing large multimedia files.
+
+Other systems have been proposed, where users' nodes collaborate directly to share their social actions, in a peer-to-peer fashion.
+Some of these systems are highly complex and interesting.
+For example, in Safebook each user is surrounded many shells, which provide a multilayered routing sheme for ensuring anonymity.
+
+However, in our opinion, there are some research routes which still deserve greater attention.
+In fact, many of these proposed systems try to independently solve various problems which have been already studied in different contexts.
+Thus, we have designed an alternative system which is based on popular protocols, for P2P file sharing, security and anonymity
+When we started the project, few years ago, in our knowledge this was one of the few working prototypes, available for basic perfomance testing
+
+---
+
+We named our system Blogracy
+We adopted a modular design, using orthogonal mechanisms for all its different aspects
+
+The system is structured in two main components, which are connected through an asynchronous messagins system
+The first component is a web application which deals with social data
+The second component deals with P2P file sharing
+
+Is is developed as an open source project, available on GitHub for experimentation, contributions, forks etcetera
+    
+---
+
+title: Basic formats and protocols
+
+The web component is based on OpenSocial, which is file format standardized by the W3C
+It allows to represent all the recent social activities of a certain user, in the form of a JSON file
+This file can optionally include basic profile information, together with a list of followees
+
+To allow social interactions, this file has to be shared among interested users
+This is the concern of the second main component of Blogracy
+In particular, Blogracy includes a plugin for a BitTorrent client
+
+In P2P applications, all nodes can also particiopate in a DHT, for example to mantain information about file availability, without the need of servers/trackers 
+In the case of BitTorrent and Blogracy, the DHT is based on the Kademlia protocol
+
+---
+
+title: Identity and security
+
+Users can freely join the Blogracy network. They are simply required to create locally a public/private keypair
+Each user is then identified directly by his own public key
+He is not required to register anywhere or to provide any data
+Each user has an associated JSON file, that stores his own recent social activities
+This file optionally include basic profile information and a list of followees
+However, after the inclusion of any new activity, the hash of this file changes
+So, an association between the userid and hisd most recent file has to be mantained
+In Blogracy, this association is stored on a Kademplia DHT, which is locically separated by the file sharing DHT
+However, in practice, these two logical DHTs may coincide
+Messages and social activities are digitally signed by their author, for assuring their integrity
+The format of signatures is the lightweight and simple JSON Web signature, which is described in a recent document (RFC) of the Internet Engineering Task Force (IETF) (RSA-SHA256)
+
+Moreover, end to end encryption can be used for confidentiality. This can be either a simple public-key encryption, or a more complex Attribute-Based Encryption scheme
+
+---
+
+title: Resource sharing
+
+![](images/figure02.png)
+
+---
+
+title: Updating the followees’ feeds
+
+![](images/figure03.png)
+
+---
+
+title: Node churn
+
+- In P2P, node churn is a typical and important issue to consider
+In fact, in P2P, some users connect and others disconnect, continuously
+However, in BitTorrent, downloading a resource corresponds to sharing it
+This is an important feature which helps to contrast the effects of node churn and to improve the robustness of the system
+In fact, if a user has enough followers, they contribute to make his/her messages available, also when the original seed is offline
+
+---
+
+title: Simulation
+
+For studying the effects of node churn, we have conducted some simulations, using an actor system
+The simulations are limited to the network of nodes directly following a certain source
+In fact, usually, this is the sharing community
+In these simulations, two kinds of nodes are modeled:
+There are nodes who connect quite occasionally (three times a day, 15 minutes in total)
+They correspond to the average pattern of behaviour of Facebook users
+Then, there are other nodes who are more stable, as they connect for 8 hours a day
+This behaviour corresponds to the average lenght of a BitTorrent session (in fact, the system remains an augmented file sharing platform)
+Also, this behaviour can represent users engaged in collaborative work, and thus connecting for the timespan of a workday
+
+In the simulation, we measured the delay in the reception of a message, with respect to its optimal reception time
+In particular, if a follower is online at the instant when a new message is published...
+then the optimal reception time corresponds to the instant of publication
+otherwise the optimal reception time corresponds to the first time the follower goes online again
+
+---
+
+title: Results of simulations
+
+images/figure04-05.png
+
+- Ok with 120 followers, 10% stable nodes → 5 min delay
+- Difficult with 40 followers
+    - 30% stable node → 10 min delay
+    - 5% stable nodes → 8 hours delay
+
+---
+
+title: Long tail of delays
+
+images/figure06.png
+
+Cumulative distribution of notification delays
+
+- Most messages are received virtually immediately
+- But for few messages, no seeds are available
+- In these cases, quite long delays are suffered
+
+---
+
+title: Implementation over BitTorrent
+
+- Plugin for Vuze (fka Azureus)
+    - Java-based BitTorrent client
+    - Object-oriented, extensible
+- Web application
+    - Embedded Jetty web server
+- Communications through JMS
+    - ActiveMQ
+    - Messages exchanged also with the browser
+    - Real time updates
+- Publish/subscribe channels based on Vuze DHT
+
+>
+
+<http://blogracy.net/>
+
+---
+
+title: Web based interface
+
+![](images/figure07.png)
+
+---
+
+title: Push vs. pull propagation
+
+We've seen the basic functioning of Blogracy, using BitTorrent and the DHT
+However, using only a polling strategy in not optimal, since it introduces unnecessary delays and network traffic
+On the other hand, a pushing strategy alone is not always adequate, especially in a P2P scenario where nodes may connect and disconnect frequently
+In fact, with just push notifications, offline nodes would not receive updates
+Thus it is necessary to strike a balance between polling and pushing mechanisms
+In Blogracy the basic polling is used at startup or for weakly related users
+In addition, there is a pushing mechanism based on DHT
+Nodes can use a publish/subscribe mechanism, with multiple channels
+Potentially, there is a channel for each user
+Users interested in a channel advertise themselves by sharing a torrent file, which is obtained by the name of the channel
+Then, messages are sent *directly* to all online subscribers
+
+---
+
+title: Pushing update notifications
+
+images/figure09.png
+
+Cumulative distribution of the delay (millis) of direct notification messages
+
+- Testing: 20 nodes over the PlanetLab testbed, constantly online
+- All nodes participate to a common publish/subscribe channel
+- 90% of messages are received in (less than) half a minute
+
+---
+
+title: Polling full files, at startup
+
+images/figure10.png
+
+Cumulative distribution of the delay in the reception of messages
+
+- Testing: 20 nodes over the PlanetLab testbed, constantly online
+- 90% of messages are received in (less than) 3.5 minutes
+    - A polling cycle every two minutes...
+    - accounts for 1 additional minute, on average
+
+---
+
+title: Attribute-Based Encryption
+
+For guaranteeing the confidentiality of messages and activities, Blogracy allows for end-to-end encryption
+In particular we have tested the use of Cyphertext-Policy Attribute-Based Encryption
+In this scheme, certified attributes are used to grant access rights to users
+An attribute authority, in general, is considered as a *trusted third party*
+
+code: CP-ABE
+
+    ( ( “Public Corruption Office”
+        AND (“Knoxville” OR “San Francisco”) )
+      OR (management-level > 5)
+      OR “Name: Charlie Eppes” )
+
+>
+
+As we can see in the example, an access policy for a certain message is essentially a boolean formula over multiple tags and attributes
+
+---
+
+title: Targeted broadcast in Blogracy
+
+images/targeted-broadcast.png
+
+Instead of dealing with centralized attribute authorities, in Blogracy attributes are issued directly by content creators to acknowledged followers
+This means that every user can act as an attribute authority for his own followers
+Each message can be encrypted with a different access policy, and thus intended to a different group of receivers
+An attribute credential issued to a certain follower is enclosed directly in the OpenSocial file of the content creator, but the credential is encrypted using the follower's public key
+
+---
+
+title: Multi-authority protocols
+class: large-image
+
+images/maabe.png
+
+In some cases, a user would like to define an access policy mixing attributes assigned by different authorities
+In fact, various Multi-Authority ABE schemes have been proposed
+Some of them are based on a predefined set of AAs, which cooperate during the setup phase
+
+No concrete scheme available for usage in P2P scenarios <br>
+L&W2011 is promising, but based on a theoretical random oracle
+
+---
+
+title: Re-certification
+
+- *Best News* certifies that *Alice* is one ot its “`reporter`”s (attribute certificate)
+- *Alice* shows the certificate to *Carol*
+- *Carol* trusts *Best News* for that kind of attributes
+- *Carol* issues her own certification to *Alice*, as a “`Best News reporter`”
+- *Alice* can then access *Carol* 's messages targeted to “`Best News reporter`”
+
+---
+
+title: Network-level anonymity
+
+- ISP can easily deanonymize users
+    - Proxies and mix networks for network-level anonymity
+- Tor for network anonymity
+    - Focused on web browsing through outproxies
+    - Supports internal hidden services...
+    - But discourages public file sharing
+    - Darknet-based file sharing is virtually nonexistant
+- I2P
+    - Experimental, small community
+    - Not focused on browsing the web
+    - Supports internal hidden services...
+    - And encourages file-sharing among darknet peers
+
+---
+
+title: Performance over I2P
+
+images/figure41-42.png
+
+- Times are much longer (3.5x)
+- In line with other measurements, about web browsing with Tor and I2P
+
+---
+
+title: Conclusion
+
+- Anonymity, confidentiality, direct control over posts
+- Scalability, especially for multimedia files
+- Working prototype, for testing and further development
+- Modular architecture: BitTorrent backend, web interface, standard formats
+- Orthogonal solutions for different aspects
+- Experimental verification, for identifying workable conditions
+
+>
+
+<http://blogracy.net/>
+
+
