@@ -11,12 +11,11 @@ figure: images/fb-napalm-girl.jpg images/fb-charlie-hebdo.jpg
     - Centralized: algorithms (recommendation etc.) have full access to data
     - Web based: easy access, across devices
 - But... there are some _“buts”_
-    - Risk of mass surveillance
-    - Lack of control and risk of censorship
-    - Risk of privacy leak
+    - Privacy leacks and mass surveillance
+    - Social silos, walled gardens
+    - Arbitrary censorship
     - Availability and reachability during crisis
-    - High cost of ownership, for multimedia services
-    - Ads or revenue generating data usage
+    - High costs, data exploitation, ads
 
 ---
 
@@ -38,9 +37,10 @@ title: Design of Blogracy
 class: large-image
 
 - Modular design, orthogonal solutions for different aspects
-    - Data formats, file sharing protocols
-    - Identity, integrity, confidentiality, anonymity
-    - Open source, available on GitHub for experimentation
+    - Web application for social data
+    - P2P file sharing
+    - Async messaging
+- Open source, available on GitHub for experimentation
     
 ![](images/figure01.png)
     
