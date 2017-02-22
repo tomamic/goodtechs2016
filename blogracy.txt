@@ -17,7 +17,7 @@ However, the centralized approach has also important drawbacks.
 1. There is a risk of privacy leacks, and also mass surveillance, which Snowden's disclosures have shown to be quite real
 2. Personal data is stored into "social silos" or "walled gardens", as Tim-Berners Lee defined them, thus it is difficult to create interacions across different social sites
 3. Published material is subject to the platform's policies, which can lead to the arbitrary censorship of paintings, historical photographs, political cartoons and other user generated content
-4. During political crisis, for example coups or mass protests, popular socila platform are easily blocked by autoritarian governments
+4. During political crisis, for example coups or mass protests, popular social platforms are easily blocked by autoritarian governments
 5. Also, such platforms have huge costs of ownership, especially in the case of shared videos and other multimedia content; thus, they have to exploit users' data to generate adequate revenue
 
 ---
@@ -25,15 +25,15 @@ However, the centralized approach has also important drawbacks.
 title: Distributed platforms
 
 Many alternative approaches have been proposed, to overcome the issues of centralized social platforms.
-One approach is based on the federation of moltiple social platforms.
-The most successful example is Diaspora, which counts in total more than half a million users, of which one tenth has been active in the last six months. Federated platforms alleviate some of the problems of centralized systems. Howevers, thier servers, or pods, suffer some of the same limitations, as they can be blocked or may present high costs for sharing large multimedia files.
+One approach is based on the federation of multiple social platforms.
+The most successful example is Diaspora, which counts in total more than half a million users, of which one tenth has been active in the last six months. Federated platforms alleviate some of the problems of centralized systems. Howevers, their servers, or pods, suffer some of the same limitations, as they can be blocked or may present high costs for sharing large multimedia files.
 
-Other systems have been proposed, where users' nodes collaborate directly to share their social actions, in a peer-to-peer fashion.
+Other systems have been proposed, where users' nodes collaborate directly to share their social data, in a peer-to-peer fashion.
 Some of these systems are highly complex and interesting.
-For example, in Safebook each user is surrounded many shells, which provide a multilayered routing sheme for ensuring anonymity.
+For example, in Safebook each user is surrounded by many shells, which provide a multilayered routing sheme for ensuring anonymity.
 
-However, in our opinion, there are some research routes which still deserve greater attention.
-In fact, many of these proposed systems try to independently solve various problems which have been already studied in different contexts.
+However, in our opinion, there are some research routes which still deserve attention.
+In fact, many of the problems faced by these social platforms have also been studied in different contexts.
 Thus, we have designed an alternative system which is based on popular protocols, for P2P file sharing, security and anonymity
 When we started the project, few years ago, in our knowledge this was one of the few working prototypes, available for basic perfomance testing
 

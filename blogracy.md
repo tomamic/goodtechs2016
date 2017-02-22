@@ -282,6 +282,47 @@ class: large-image
 
 ---
 
+title: Improve pull mechanism (TODO)
+
+- Relying on BitTorrent, each follower in Blogracy holds a file replica becomes a seeder
+- However, with very few friends there are very few replicas, churn is a problem
+- *Strategy 1.* Add more temporary followers, to help introducing new nodes into the network
+- *Strategy 2.* Let a node pass the most critical files of his friends to another node, before disconnecting
+- *Issues.* How to select supporting nodes? Which incentive to provide?
+
+---
+
+title: Improve push mechanism (TODO)
+
+- Right now, new social actions are pushed directly to each online follower
+    - Scalability issues, for more than few dozen nodes
+- *Strategy.* Organize interested nodes into a spanning tree
+    - Used among IRC servers: stable, not P2P
+    - Also look at <http://matrix.org> (federated)
+- *Strategy.* Use the DHT to find a node of the tree
+    - Castro et al. (2002): Scribe, multicast over Pastry
+    - Czirkos, Hosszú (2013): broadcast over Kademlia
+    - Matl, Cerny, Donahoo (2015): manycast over Kademlia
+- *Issues.* Minimize management overhead due to churn; involve only interested nodes...
+
+---
+
+title: Persistence of discussions (TODO)
+
+- When some activity is performed about a user, by others...
+    - Communicated over the user's dedicated channel
+    - If target user online: add item to his own activity stream
+    - If offline, miss the activity, temporarily or permanently
+- *Strategy 1.* Some close friend(s) may be delegated by a user
+    - To aggregate public activities, related to the user, when he is offline
+    - Selection based on direct personal *trust*
+- *Strategy 2.* Bully election of the channel manager (aggregator)
+    - Periodic selection based on some notion of *reputation*
+    - Also fit for public *hashtag* discussion channels
+- *Issues.* Should channel manager filter spam out? Risks of censorship
+
+---
+
 title: Conclusion
 
 - Anonymity, confidentiality, direct control over posts

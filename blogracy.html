@@ -512,6 +512,80 @@ L&amp;W2011 is promising, but based on a theoretical random oracle</p></article>
 <slide  >
   
     <hgroup>
+      <h2>Improve pull mechanism (TODO)</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Relying on BitTorrent, each follower in Blogracy holds a file replica becomes a seeder</li>
+<li>However, with very few friends there are very few replicas, churn is a problem</li>
+<li><em>Strategy 1.</em> Add more temporary followers, to help introducing new nodes into the network</li>
+<li><em>Strategy 2.</em> Let a node pass the most critical files of his friends to another node, before disconnecting</li>
+<li><em>Issues.</em> How to select supporting nodes? Which incentive to provide?</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Improve push mechanism (TODO)</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Right now, new social actions are pushed directly to each online follower<ul>
+<li>Scalability issues, for more than few dozen nodes</li>
+</ul>
+</li>
+<li><em>Strategy.</em> Organize interested nodes into a spanning tree<ul>
+<li>Used among IRC servers: stable, not P2P</li>
+<li>Also look at <a href="http://matrix.org">http://matrix.org</a> (federated)</li>
+</ul>
+</li>
+<li><em>Strategy.</em> Use the DHT to find a node of the tree<ul>
+<li>Castro et al. (2002): Scribe, multicast over Pastry</li>
+<li>Czirkos, Hosszú (2013): broadcast over Kademlia</li>
+<li>Matl, Cerny, Donahoo (2015): manycast over Kademlia</li>
+</ul>
+</li>
+<li><em>Issues.</em> Minimize management overhead due to churn; involve only interested nodes...</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Persistence of discussions (TODO)</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>When some activity is performed about a user, by others...<ul>
+<li>Communicated over the user's dedicated channel</li>
+<li>If target user online: add item to his own activity stream</li>
+<li>If offline, miss the activity, temporarily or permanently</li>
+</ul>
+</li>
+<li><em>Strategy 1.</em> Some close friend(s) may be delegated by a user<ul>
+<li>To aggregate public activities, related to the user, when he is offline</li>
+<li>Selection based on direct personal <em>trust</em></li>
+</ul>
+</li>
+<li><em>Strategy 2.</em> Bully election of the channel manager (aggregator)<ul>
+<li>Periodic selection based on some notion of <em>reputation</em></li>
+<li>Also fit for public <em>hashtag</em> discussion channels</li>
+</ul>
+</li>
+<li><em>Issues.</em> Should channel manager filter spam out? Risks of censorship</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
       <h2>Conclusion</h2>
       <h3></h3>
     </hgroup>
